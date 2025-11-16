@@ -73,18 +73,28 @@ export default function Hero() {
               size="lg" 
               className="gap-2 shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all duration-200" 
               data-testid="button-lets-talk"
+              asChild
             >
-              <Mail className="w-4 h-4" />
-              <span>Get in Touch</span>
+              <a href="mailto:parthsrivastavaa18@gmail.com">
+                <Mail className="w-4 h-4" />
+                <span>Get in Touch</span>
+              </a>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
               className="gap-2 border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-200 shadow-lg shadow-primary/30" 
               data-testid="button-view-resume"
+              asChild
             >
-              <FileText className="w-4 h-4" />
-              View Resume
+              <a 
+                href="https://drive.google.com/file/d/1Ms-0AsES7d0GyNRWjtvLndX-Z36L4Vr6/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FileText className="w-4 h-4" />
+                View Resume
+              </a>
             </Button>
           </motion.div>
 
