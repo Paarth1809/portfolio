@@ -77,12 +77,15 @@ export default function Experience() {
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <Card
-                    className="group transition-all duration-300 border-primary/20 bg-card/50 backdrop-blur-sm"
+                    className="group transition-all duration-300 liquid-glass"
                     style={{
                       transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
+                      borderColor: hoveredIndex === index 
+                        ? 'rgba(168, 85, 247, 0.4)'
+                        : 'rgba(168, 85, 247, 0.15)',
                       boxShadow: hoveredIndex === index 
-                        ? '0 0 30px rgba(168, 85, 247, 0.5)'
-                        : '0 0 15px rgba(168, 85, 247, 0.2)',
+                        ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.1)'
+                        : '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
                     }}
                     data-testid={`card-experience-${index}`}
                   >
@@ -104,7 +107,16 @@ export default function Experience() {
                           <p className="text-sm font-medium text-neon-cyan" data-testid={`text-company-${index}`}>
                             {exp.company}
                           </p>
-                          <Badge variant="outline" className="mt-2 border-primary/40">
+                          <Badge 
+                            variant="outline" 
+                            className="mt-2"
+                            style={{
+                              background: 'rgba(168, 85, 247, 0.15)',
+                              backdropFilter: 'blur(8px)',
+                              WebkitBackdropFilter: 'blur(8px)',
+                              border: '1px solid rgba(168, 85, 247, 0.3)',
+                            }}
+                          >
                             {exp.duration}
                           </Badge>
                         </div>

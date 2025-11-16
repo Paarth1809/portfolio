@@ -57,10 +57,7 @@ export default function Contact() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.2 + index * 0.1 }}
                 whileHover={{ scale: 1.02, x: 5 }}
-                className="flex items-center gap-4 p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all duration-200"
-                style={{
-                  boxShadow: '0 0 15px rgba(168, 85, 247, 0.2)',
-                }}
+                className="flex items-center gap-4 p-4 rounded-lg liquid-glass liquid-glass-hover transition-all duration-300"
               >
                 <div className="p-3 rounded-full bg-primary/20">
                   <Icon className="w-5 h-5 text-neon-purple" />
@@ -83,6 +80,7 @@ export default function Contact() {
               <motion.a
                 key={label}
                 href={href}
+                aria-label={label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 + index * 0.1 }}
@@ -90,11 +88,8 @@ export default function Contact() {
                   scale: 1.15, 
                   y: -5,
                 }}
-                className="p-4 rounded-full bg-card/50 backdrop-blur-sm border border-primary/30 relative overflow-hidden group"
+                className="p-4 rounded-full liquid-glass liquid-glass-hover relative group neon-glow-purple"
                 data-testid={`link-social-${label.toLowerCase()}`}
-                style={{
-                  boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)',
-                }}
               >
                 <Icon className="w-5 h-5 text-foreground group-hover:text-neon-purple transition-colors duration-200" />
               </motion.a>
@@ -108,7 +103,7 @@ export default function Contact() {
           >
             <Button 
               size="lg" 
-              className="gap-2 shadow-2xl shadow-primary/50" 
+              className="gap-2 liquid-glass-hover neon-glow-purple transition-all duration-300" 
               data-testid="button-download-resume"
             >
               Download Resume

@@ -122,11 +122,8 @@ export default function Testimonials() {
                 className="w-full"
               >
                 <Card 
-                  className="p-8 md:p-12 border-primary/20 bg-card/50 backdrop-blur-sm relative overflow-hidden" 
+                  className="p-8 md:p-12 liquid-glass relative neon-glow-purple" 
                   data-testid={`card-testimonial-${currentIndex}`}
-                  style={{
-                    boxShadow: '0 0 30px rgba(168, 85, 247, 0.4)',
-                  }}
                 >
                   <CardContent className="p-0 relative z-10">
                     <motion.div
@@ -164,7 +161,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-200 shadow-lg shadow-primary/30"
+              className="liquid-glass-hover neon-glow-purple transition-all duration-300"
               data-testid="button-testimonial-prev"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -195,7 +192,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-200 shadow-lg shadow-primary/30"
+              className="liquid-glass-hover neon-glow-purple transition-all duration-300"
               data-testid="button-testimonial-next"
             >
               <ChevronRight className="w-4 h-4" />
