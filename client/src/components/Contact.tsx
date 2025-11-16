@@ -80,6 +80,8 @@ export default function Contact() {
               <motion.a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -108,7 +110,7 @@ export default function Contact() {
               asChild
             >
               <a 
-                href="/attached_assets/My_resume_1763287167361.pdf" 
+                href="/Parth_Srivastava_Resume.pdf" 
                 download="Parth_Srivastava_Resume.pdf"
               >
                 Download Resume
