@@ -88,7 +88,7 @@ export default function Hero() {
               asChild
             >
               <a 
-                href="https://drive.google.com/file/d/1Ms-0AsES7d0GyNRWjtvLndX-Z36L4Vr6/view?usp=sharing"
+                href="https://drive.google.com/file/d/1GRH2IWmmaoU9bQXOIvhIhDjDbDyKCTm8/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
