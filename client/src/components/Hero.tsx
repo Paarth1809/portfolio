@@ -73,22 +73,17 @@ export default function Hero() {
           >
             <Button 
               size="lg" 
-              className="gap-2 relative overflow-hidden group shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all duration-200" 
+              className="gap-2 shadow-lg shadow-primary/50" 
               data-testid="button-lets-talk"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                whileHover={{ scale: 1.5 }}
-                transition={{ duration: 0.2 }}
-              />
-              <Calendar className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Let's Talk</span>
+              <Calendar className="w-4 h-4" />
+              <span>Let's Talk</span>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="gap-2 border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-200 shadow-lg shadow-primary/30" 
+              className="gap-2 shadow-lg shadow-primary/30" 
               data-testid="button-view-resume"
             >
               <FileText className="w-4 h-4" />
@@ -117,9 +112,8 @@ export default function Hero() {
                   ease: "easeOut",
                 }}
                 whileHover={{ 
-                  scale: 1.4, 
-                  y: -15,
-                  rotate: 5,
+                  scale: 1.2, 
+                  y: -8,
                   transition: { duration: 0.15, ease: "easeOut" }
                 }}
                 className="relative cursor-pointer group"

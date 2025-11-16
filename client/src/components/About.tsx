@@ -50,7 +50,7 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.3, delay: 0.05, ease: "easeOut" }}
             className="relative"
-            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
           >
             <div className="relative glass-gradient p-8 rounded-lg overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 via-neon-purple/10 to-neon-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -85,9 +85,9 @@ export default function About() {
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.15 + index * 0.015, duration: 0.15, ease: "easeOut" }}
                   whileHover={{
-                    scale: 1.15,
-                    y: -5,
-                    transition: { duration: 0.1, ease: "easeOut" }
+                    scale: 1.08,
+                    y: -3,
+                    transition: { duration: 0.15, ease: "easeOut" }
                   }}
                   onHoverStart={() => setHoveredSkill(skill)}
                   onHoverEnd={() => setHoveredSkill(null)}

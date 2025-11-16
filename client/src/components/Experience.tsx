@@ -64,7 +64,7 @@ export default function Experience() {
                 transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
-                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
+                whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}

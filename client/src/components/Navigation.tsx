@@ -82,16 +82,10 @@ export default function Navigation() {
             ))}
             <Button
               onClick={() => scrollToSection('contact')}
-              className="ml-2 relative overflow-hidden group shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-200"
+              className="ml-2 shadow-lg shadow-primary/30"
               data-testid="button-contact"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.2 }}
-              />
-              <span className="relative z-10">Contact</span>
+              <span>Contact</span>
             </Button>
           </div>
 

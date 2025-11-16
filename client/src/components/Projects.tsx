@@ -38,15 +38,6 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent, index: number) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-    setMousePosition({ x, y });
-    setHoveredIndex(index);
-  };
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
@@ -85,18 +76,13 @@ export default function Projects() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
-              onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              style={{
-                perspective: '1000px',
-              }}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative glass-card transition-all duration-200"
+                className="overflow-hidden h-full flex flex-col group relative glass-card"
                 style={{
-                  transform: hoveredIndex === index 
-                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.5}deg) rotateY(${mousePosition.x * 0.5}deg) translateZ(20px)`
-                    : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
                   boxShadow: hoveredIndex === index 
                     ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)'
                     : '0 0 15px rgba(168, 85, 247, 0.2)',
