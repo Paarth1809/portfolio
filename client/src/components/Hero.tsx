@@ -129,26 +129,29 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.8 }}
             className="flex flex-wrap gap-6 md:gap-8 justify-center items-center"
           >
-            {techIcons.map(({ Icon, name, delay, color }) => (
+            {techIcons.map(({ Icon, name, delay, color }, index) => (
               <motion.div
                 key={name}
-                initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -90 }}
                 animate={{
                   opacity: 1,
                   y: 0,
                   scale: 1,
+                  rotateX: 0,
                 }}
                 transition={{
                   opacity: { delay: 0.9 + delay, duration: 0.5 },
                   y: { delay: 0.9 + delay, duration: 0.5 },
+                  rotateX: { delay: 0.9 + delay, duration: 0.8, type: 'spring' },
                 }}
                 whileHover={{ 
-                  scale: 1.3, 
-                  y: -10,
+                  scale: 1.5, 
+                  y: -20,
                   rotateY: 360,
-                  filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.8))',
+                  rotateZ: 15,
+                  filter: 'drop-shadow(0 0 30px rgba(168, 85, 247, 1)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.5))',
                 }}
-                className="relative cursor-pointer"
+                className="relative cursor-pointer group"
                 style={{ 
                   perspective: '1000px',
                   transformStyle: 'preserve-3d',
@@ -156,19 +159,63 @@ export default function Hero() {
               >
                 <motion.div
                   animate={{
-                    y: [0, -10, 0],
+                    y: [0, -15, 0],
+                    rotateX: [0, 10, 0],
+                    rotateZ: [0, -5, 0],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4 + index * 0.5,
                     repeat: Infinity,
                     delay: delay * 0.5,
+                    ease: 'easeInOut',
                   }}
+                  className="relative"
                 >
-                  <Icon 
-                    className="w-10 h-10 md:w-12 md:h-12" 
+                  <motion.div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0.8, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                    }}
                     style={{
-                      color: color,
-                      filter: `drop-shadow(0 0 10px ${color}80)`,
+                      background: `radial-gradient(circle, ${color}80, transparent)`,
+                      filter: 'blur(20px)',
+                    }}
+                  />
+                  
+                  <motion.div
+                    whileHover={{
+                      rotateY: [0, 360],
+                    }}
+                    transition={{
+                      rotateY: { duration: 0.6 },
+                    }}
+                  >
+                    <Icon 
+                      className="w-10 h-10 md:w-12 md:h-12 relative z-10" 
+                      style={{
+                        color: color,
+                        filter: `drop-shadow(0 0 15px ${color}) drop-shadow(0 0 30px ${color}80)`,
+                      }}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    className="absolute -inset-4 rounded-full border-2 opacity-0 group-hover:opacity-100"
+                    style={{
+                      borderColor: color,
+                    }}
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      scale: { duration: 2, repeat: Infinity },
+                      rotate: { duration: 8, repeat: Infinity, ease: 'linear' },
                     }}
                   />
                 </motion.div>
