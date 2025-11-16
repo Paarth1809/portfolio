@@ -86,14 +86,17 @@ export default function Projects() {
               }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-300"
+                className="overflow-visible h-full flex flex-col group relative liquid-glass transition-all duration-300"
                 style={{
                   transform: hoveredIndex === index 
-                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.3}deg) rotateY(${mousePosition.x * 0.3}deg) translateZ(15px)`
+                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.3}deg) rotateY(${mousePosition.x * 0.3}deg) translateZ(20px)`
                     : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
+                  borderColor: hoveredIndex === index 
+                    ? 'rgba(168, 85, 247, 0.4)'
+                    : 'rgba(168, 85, 247, 0.15)',
                   boxShadow: hoveredIndex === index 
-                    ? '0 0 30px rgba(168, 85, 247, 0.5)'
-                    : '0 0 15px rgba(168, 85, 247, 0.2)',
+                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.1)'
+                    : '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
                 }}
                 data-testid={`card-project-${index}`}
               >
@@ -115,7 +118,13 @@ export default function Projects() {
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <Badge 
                       variant="secondary" 
-                      className="bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/30"
+                      className="text-primary neon-glow-purple"
+                      style={{
+                        background: 'rgba(168, 85, 247, 0.2)',
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(168, 85, 247, 0.4)',
+                      }}
                     >
                       {project.category}
                     </Badge>
@@ -137,7 +146,13 @@ export default function Projects() {
                       <Badge 
                         key={tag} 
                         variant="outline" 
-                        className="text-xs border-border/50 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-200"
+                        className="text-xs hover:text-neon-cyan transition-all duration-300"
+                        style={{
+                          background: 'rgba(15, 15, 25, 0.4)',
+                          backdropFilter: 'blur(8px)',
+                          WebkitBackdropFilter: 'blur(8px)',
+                          border: '1px solid rgba(59, 130, 246, 0.2)',
+                        }}
                       >
                         {tag}
                       </Badge>
@@ -148,8 +163,14 @@ export default function Projects() {
                 <CardFooter className="relative z-10">
                   <Button 
                     variant="outline" 
-                    className="w-full gap-2 border-primary/50 hover:bg-primary hover:border-primary group/btn transition-all duration-200 shadow-lg shadow-primary/20" 
+                    className="w-full gap-2 group/btn transition-all duration-300 neon-glow-purple" 
                     data-testid={`button-view-project-${index}`}
+                    style={{
+                      background: 'rgba(168, 85, 247, 0.1)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(168, 85, 247, 0.3)',
+                    }}
                   >
                     <ExternalLink className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-200" />
                     <span>View Project</span>
