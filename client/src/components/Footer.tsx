@@ -8,10 +8,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-card/50 backdrop-blur-sm border-t border-primary/20 py-12 relative overflow-hidden">
+    <footer className="bg-card/50 border-t border-primary/20 py-12 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-purple/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-neon-cyan/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-purple/20 rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-neon-cyan/20 rounded-full" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

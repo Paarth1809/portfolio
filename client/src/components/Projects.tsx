@@ -12,32 +12,25 @@ import cybersecurity from '@assets/generated_images/Cybersecurity_project_screen
 
 const projects = [
   {
-    title: 'Knosfer Landing Page',
-    category: 'Landing Page',
-    description: 'Landing page showcasing LMS features and demonstrations with modern design and animations',
-    image: webDashboard,
-    tags: ['React', 'TypeScript', 'Tailwind'],
-  },
-  {
-    title: 'Webster CRM',
-    category: 'Mobile App',
-    description: 'AI-powered CRM application for campaign management and audience segmentation with Next.js frontend',
-    image: mobileApp,
-    tags: ['Next.js', 'Node.js', 'AI/ML'],
-  },
-  {
-    title: 'GitRAGBot',
-    category: 'AI/ML',
-    description: 'AI chatbot using RAG to answer queries from public GitHub repos, reducing manual code review',
-    image: aiChatbot,
-    tags: ['Python', 'RAG', 'OpenAI'],
-  },
-  {
-    title: 'EpiCircle ScrapPickup',
-    category: 'Mobile App',
-    description: 'React Native app for scrap pickup management with dynamic interfaces for customers and partners',
+    title: 'Network Sniffer',
+    category: 'Security Tool',
+    description: 'Built a packet sniffer using Scapy for real-time traffic capture and analysis. Developed a lightweight network monitoring tool to capture, parse, and analyze network packets for security testing and diagnostics.',
     image: cybersecurity,
-    tags: ['React Native', 'TypeScript', 'Mobile'],
+    tags: ['Python', 'Scapy', 'Networking'],
+  },
+  {
+    title: 'Password Generator',
+    category: 'Security Tool',
+    description: 'Created a secure password generator with customizable length and character sets. Developed a lightweight tool to generate strong random passwords with configurable parameters for enhanced security.',
+    image: webDashboard,
+    tags: ['Python', 'Security', 'CLI'],
+  },
+  {
+    title: 'Chess Game',
+    category: 'Game Development',
+    description: 'Built an interactive chess game with core move logic and validation. Developed a functional chess game with valid piece movement, captures, and game state management.',
+    image: aiChatbot,
+    tags: ['Python', 'Game Logic', 'OOP'],
   },
 ];
 
@@ -57,16 +50,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/30 rounded-full blur-3xl" />
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h2 
@@ -80,7 +69,7 @@ export default function Projects() {
             </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
-            Explore my projects to experience innovative design and uncover creative solutions
+            Security tools and applications built with Python
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50" />
         </motion.div>
@@ -91,7 +80,7 @@ export default function Projects() {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
@@ -99,18 +88,18 @@ export default function Projects() {
               }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-500"
+                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 transition-all duration-300"
                 style={{
                   transform: hoveredIndex === index 
-                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.5}deg) rotateY(${mousePosition.x * 0.5}deg) translateZ(20px)`
+                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.3}deg) rotateY(${mousePosition.x * 0.3}deg) translateZ(15px)`
                     : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
                   boxShadow: hoveredIndex === index 
-                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 20px 60px rgba(0, 0, 0, 0.5)'
-                    : '0 0 20px rgba(168, 85, 247, 0.2)',
+                    ? '0 0 30px rgba(168, 85, 247, 0.5)'
+                    : '0 0 15px rgba(168, 85, 247, 0.2)',
                 }}
                 data-testid={`card-project-${index}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative overflow-hidden aspect-video">
                   <motion.img
@@ -118,9 +107,9 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover"
                     animate={{
-                      scale: hoveredIndex === index ? 1.15 : 1,
+                      scale: hoveredIndex === index ? 1.1 : 1,
                     }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }}
                     data-testid={`img-project-${index}`}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent transition-opacity duration-500 ${hoveredIndex === index ? 'opacity-100' : 'opacity-60'}`} />
