@@ -54,7 +54,7 @@ export default function Navigation() {
               filter: 'drop-shadow(0 0 8px rgba(168, 85, 247, 0.6)) drop-shadow(0 0 16px rgba(59, 130, 246, 0.4))',
             }}
           >
-            Parth Srivastava
+            Portfolio
           </motion.button>
 
           <div className="hidden md:flex items-center gap-1">

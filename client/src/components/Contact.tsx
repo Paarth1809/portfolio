@@ -13,8 +13,8 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Github, label: 'GitHub', href: '#' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/parthsrivastava03' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/Paarth1809' },
   ];
 
   return (
@@ -105,8 +105,14 @@ export default function Contact() {
               size="lg" 
               className="gap-2 liquid-glass-hover neon-glow-purple transition-all duration-300" 
               data-testid="button-download-resume"
+              asChild
             >
-              Download Resume
+              <a 
+                href="/attached_assets/My_resume_1763287167361.pdf" 
+                download="Parth_Srivastava_Resume.pdf"
+              >
+                Download Resume
+              </a>
             </Button>
           </motion.div>
         </motion.div>

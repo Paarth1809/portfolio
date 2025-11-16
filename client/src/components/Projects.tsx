@@ -16,6 +16,7 @@ const projects = [
     description: 'Built a packet sniffer using Scapy for real-time traffic capture and analysis. Lightweight tool to monitor and parse network packets with detailed protocol inspection.',
     image: webDashboard,
     tags: ['Python', 'Scapy', 'Networking'],
+    link: 'https://github.com/Paarth1809/Network-sniffer',
   },
   {
     title: 'Password Generator',
@@ -23,6 +24,7 @@ const projects = [
     description: 'Created a customizable password generator with configurable length and character sets. Generates cryptographically secure random passwords for enhanced security.',
     image: mobileApp,
     tags: ['Python', 'Security', 'CLI'],
+    link: 'https://github.com/Paarth1809/passgen',
   },
   {
     title: 'Chess Game',
@@ -30,6 +32,7 @@ const projects = [
     description: 'Developed an interactive chess game with complete move validation logic. Features valid moves, captures, and functional piece movement with clean UI.',
     image: aiChatbot,
     tags: ['Python', 'Game Dev', 'Logic'],
+    link: 'https://github.com/Paarth1809/chess_game',
   },
 ];
 
@@ -165,15 +168,22 @@ export default function Projects() {
                     variant="outline" 
                     className="w-full gap-2 group/btn transition-all duration-300 neon-glow-purple" 
                     data-testid={`button-view-project-${index}`}
-                    style={{
-                      background: 'rgba(168, 85, 247, 0.1)',
-                      backdropFilter: 'blur(8px)',
-                      WebkitBackdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(168, 85, 247, 0.3)',
-                    }}
+                    asChild
                   >
-                    <ExternalLink className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-200" />
-                    <span>View Project</span>
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        background: 'rgba(168, 85, 247, 0.1)',
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(168, 85, 247, 0.3)',
+                      }}
+                    >
+                      <ExternalLink className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-200" />
+                      <span>View Project</span>
+                    </a>
                   </Button>
                 </CardFooter>
               </Card>
