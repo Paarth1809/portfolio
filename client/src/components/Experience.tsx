@@ -32,20 +32,24 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4 animate-neon-pulse"
             style={{
               textShadow: '0 0 20px rgba(236, 72, 153, 0.5)',
             }}
           >
-            <span className="bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan bg-clip-text text-transparent animate-gradient">
               Professional Experience
             </span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-neon-pink to-neon-purple mx-auto rounded-full shadow-lg shadow-neon-pink/50" />
+          <motion.div 
+            className="w-20 h-1 bg-gradient-to-r from-neon-pink to-neon-purple mx-auto rounded-full shadow-lg shadow-neon-pink/50"
+            animate={{ scaleX: [0.8, 1.2, 0.8] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
 
         <div className="relative">
@@ -57,25 +61,26 @@ export default function Experience() {
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
+                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <Card
-                    className="group transition-all duration-300 border-primary/20 bg-card/50"
+                    className="group transition-all duration-200 glass-card overflow-hidden"
                     style={{
                       transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
                       boxShadow: hoveredIndex === index 
-                        ? '0 0 30px rgba(168, 85, 247, 0.5)'
+                        ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)'
                         : '0 0 15px rgba(168, 85, 247, 0.2)',
                     }}
                     data-testid={`card-experience-${index}`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-neon-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-neon-cyan/10 to-neon-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg" />
                     
                     <CardHeader className="relative z-10">
                       <div className="flex items-start gap-4">

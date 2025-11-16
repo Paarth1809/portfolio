@@ -33,10 +33,10 @@ export default function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-150 ${
         isScrolled 
-          ? 'bg-background/95 border-b border-primary/20 shadow-lg shadow-primary/10' 
+          ? 'glass-strong border-b border-primary/30 shadow-lg shadow-primary/20' 
           : ''
       }`}
       data-testid="navigation-header"

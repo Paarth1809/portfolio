@@ -55,23 +55,27 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4 animate-neon-pulse"
             style={{
               textShadow: '0 0 20px rgba(168, 85, 247, 0.5)',
             }}
           >
-            <span className="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent animate-gradient">
               Selected Projects
             </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
             Security tools and applications built with Python
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50" />
+          <motion.div 
+            className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50"
+            animate={{ scaleX: [0.8, 1.2, 0.8] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -80,7 +84,7 @@ export default function Projects() {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
@@ -88,18 +92,18 @@ export default function Projects() {
               }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 transition-all duration-300"
+                className="overflow-hidden h-full flex flex-col group relative glass-card transition-all duration-200"
                 style={{
                   transform: hoveredIndex === index 
-                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.3}deg) rotateY(${mousePosition.x * 0.3}deg) translateZ(15px)`
+                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.5}deg) rotateY(${mousePosition.x * 0.5}deg) translateZ(20px)`
                     : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
                   boxShadow: hoveredIndex === index 
-                    ? '0 0 30px rgba(168, 85, 247, 0.5)'
+                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)'
                     : '0 0 15px rgba(168, 85, 247, 0.2)',
                 }}
                 data-testid={`card-project-${index}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/15 via-neon-cyan/15 to-neon-pink/15 opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
                 
                 <div className="relative overflow-hidden aspect-video">
                   <motion.img
