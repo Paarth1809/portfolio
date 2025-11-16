@@ -4,9 +4,12 @@ import { useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 
 const skills = [
-  'React', 'Node.js', 'Python', 'TypeScript', 'JavaScript',
-  'MongoDB', 'PostgreSQL', 'Docker', 'AWS', 'Git',
-  'Machine Learning', 'Deep Learning', 'Cybersecurity', 'FastAPI', 'Django'
+  'Python', 'Bash', 'Java', 'JavaScript', 'C/C++',
+  'React JS', 'Next JS', 'Node JS', 'Tailwind CSS',
+  'Terraform', 'CI/CD', 'GCP', 'AWS',
+  'MySQL', 'PostgreSQL', 'SQLite', 'Supabase',
+  'Pytest', 'Jenkins', 'Kubernetes', 'Docker',
+  'Metasploit', 'Wireshark', 'Burp Suite', 'Wazuh'
 ];
 
 export default function About() {
@@ -16,15 +19,11 @@ export default function About() {
 
   return (
     <section id="about" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-neon-cyan/40 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h2 
@@ -44,22 +43,24 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="relative"
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 rounded-lg blur-xl" />
             <div className="relative bg-card/50 backdrop-blur-sm p-8 rounded-lg border border-primary/20">
               <h3 
                 className="text-2xl md:text-3xl font-heading font-semibold mb-6 text-neon-purple" 
                 data-testid="text-about-title"
               >
-                Passionate about building secure, intelligent systems that make a real-world impact
+                Cybersecurity Professional & B.Tech Student
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-description">
-                I'm a final-year Computer Science student specializing in Cybersecurity. With a strong passion for artificial intelligence, secure systems, and scalable software architecture, I design and develop tech solutions that are both innovative and resilient.
+                Currently pursuing B.Tech at SRM Institute of Science and Technology (CGPA: 7.2). Specializing in vulnerability assessment, penetration testing, and secure system architecture with hands-on experience in VAPT and cybersecurity operations.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Built multiple security tools including OSINT-based info gathering platforms, phishing awareness simulations, and network sniffers. Experienced in configuring SIEM systems, automating security workflows, and conducting comprehensive vulnerability assessments.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                My experience spans from building OSINT tools for cyber commandos to developing deepfake detection systems with 92.6% accuracy. I thrive on challenges that combine cutting-edge technology with practical security applications.
+                Certified in Cisco Networking Basics and Cisco Ethical Hacking. Completed 10+ industry-recognized courses across Cybersecurity, AI/ML, and NLP from Infosys, Google, Cisco, and Microsoft.
               </p>
             </div>
           </motion.div>
@@ -67,7 +68,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <h4 className="text-xl font-heading font-semibold mb-6 text-neon-cyan">Technical Skills</h4>
             <div className="flex flex-wrap gap-3">
@@ -76,23 +77,23 @@ export default function About() {
                   key={skill}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.5 + index * 0.05, duration: 0.3 }}
+                  transition={{ delay: 0.3 + index * 0.02, duration: 0.2 }}
                   whileHover={{
-                    scale: 1.15,
-                    y: -5,
+                    scale: 1.1,
+                    y: -3,
                   }}
                   onHoverStart={() => setHoveredSkill(skill)}
                   onHoverEnd={() => setHoveredSkill(null)}
                 >
                   <Badge
                     variant="secondary"
-                    className="text-sm px-4 py-2 cursor-pointer transition-all duration-300 border border-primary/30"
+                    className="text-sm px-4 py-2 cursor-pointer transition-all duration-200 border border-primary/30"
                     style={{
                       background: hoveredSkill === skill 
                         ? 'linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(59, 130, 246, 0.3))'
                         : 'rgba(168, 85, 247, 0.1)',
                       boxShadow: hoveredSkill === skill 
-                        ? '0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3)'
+                        ? '0 0 20px rgba(168, 85, 247, 0.6)'
                         : '0 0 10px rgba(168, 85, 247, 0.2)',
                     }}
                     data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}

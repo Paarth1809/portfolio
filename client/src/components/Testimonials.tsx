@@ -8,32 +8,25 @@ import { Button } from '@/components/ui/button';
 import avatar1 from '@assets/generated_images/Female_CEO_testimonial_avatar_d829005e.png';
 import avatar2 from '@assets/generated_images/Male_founder_testimonial_avatar_6d285c65.png';
 import avatar3 from '@assets/generated_images/Male_CTO_testimonial_avatar_30531fae.png';
-import avatar4 from '@assets/generated_images/Male_developer_testimonial_avatar_a00324ba.png';
 
 const testimonials = [
   {
-    quote: "Jumped right into our development cycle and started contributing from day one. Handled both frontend and backend tasks with ease, and always made sure the code was clean and efficient.",
-    author: "Michael Subroto",
-    role: "CEO at Creatip",
+    quote: "Parth demonstrated exceptional skills in vulnerability assessment and penetration testing. His ability to identify security gaps and automate workflows with Python significantly improved our security posture.",
+    author: "Security Team Lead",
+    role: "Cyart",
     avatar: avatar1,
   },
   {
-    quote: "It was great working together during the internship. Picked up complex concepts in deepfake detection very quickly and was able to push model accuracy beyond expectations.",
-    author: "Savira William",
-    role: "Founder at Softech",
+    quote: "Outstanding work on the OSINT tool and phishing awareness platform. Parth's technical expertise and proactive approach to cybersecurity made him an invaluable member of our team.",
+    author: "Security Manager",
+    role: "1Stop",
     avatar: avatar2,
   },
   {
-    quote: "Took ownership of building an OSINT tool that turned out to be incredibly useful for our cyber investigation teams. Someone you can trust to work on serious, high-impact projects.",
-    author: "Fitriana Moara",
-    role: "CTO at Floarish",
+    quote: "Impressive dedication to learning and implementing advanced security concepts. His work on SIEM integration and attack simulation showed deep understanding of cybersecurity principles.",
+    author: "Senior Security Engineer",
+    role: "Cyart",
     avatar: avatar3,
-  },
-  {
-    quote: "Working together was a fantastic experience. Technical skills combined with problem-solving approach made them an invaluable team member.",
-    author: "Alex Rodriguez",
-    role: "Lead Developer at TechFlow",
-    avatar: avatar4,
   },
 ];
 
@@ -69,7 +62,7 @@ export default function Testimonials() {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
-      rotateY: direction > 0 ? 45 : -45,
+      rotateY: direction > 0 ? 30 : -30,
     }),
     center: {
       x: 0,
@@ -79,7 +72,7 @@ export default function Testimonials() {
     exit: (direction: number) => ({
       x: direction > 0 ? -1000 : 1000,
       opacity: 0,
-      rotateY: direction > 0 ? -45 : 45,
+      rotateY: direction > 0 ? -30 : 30,
     }),
   };
 
@@ -91,15 +84,11 @@ export default function Testimonials() {
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-neon-purple/40 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h2 
@@ -116,7 +105,7 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto" style={{ perspective: '2000px' }}>
-          <div className="relative overflow-hidden min-h-[400px] flex items-center">
+          <div className="relative overflow-hidden min-h-[350px] flex items-center">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -127,8 +116,8 @@ export default function Testimonials() {
                 exit="exit"
                 transition={{
                   x: { type: 'spring', stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
-                  rotateY: { duration: 0.5 },
+                  opacity: { duration: 0.2 },
+                  rotateY: { duration: 0.3 },
                 }}
                 className="w-full"
               >
@@ -136,16 +125,14 @@ export default function Testimonials() {
                   className="p-8 md:p-12 border-primary/20 bg-card/50 backdrop-blur-sm relative overflow-hidden" 
                   data-testid={`card-testimonial-${currentIndex}`}
                   style={{
-                    boxShadow: '0 0 40px rgba(168, 85, 247, 0.4), 0 20px 60px rgba(0, 0, 0, 0.5)',
+                    boxShadow: '0 0 30px rgba(168, 85, 247, 0.4)',
                   }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10" />
-                  
                   <CardContent className="p-0 relative z-10">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: 'spring' }}
+                      transition={{ delay: 0.1, type: 'spring' }}
                     >
                       <Quote className="w-12 h-12 text-neon-purple mb-6" />
                     </motion.div>
@@ -177,7 +164,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-300 shadow-lg shadow-primary/30"
+              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-200 shadow-lg shadow-primary/30"
               data-testid="button-testimonial-prev"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -192,7 +179,7 @@ export default function Testimonials() {
                     setCurrentIndex(index);
                     setIsAutoPlaying(false);
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-200 ${
                     index === currentIndex ? 'bg-neon-purple w-8' : 'bg-muted-foreground/30 w-2'
                   }`}
                   style={{
@@ -208,7 +195,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-300 shadow-lg shadow-primary/30"
+              className="border-primary/50 hover:bg-primary/20 hover:border-primary transition-all duration-200 shadow-lg shadow-primary/30"
               data-testid="button-testimonial-next"
             >
               <ChevronRight className="w-4 h-4" />

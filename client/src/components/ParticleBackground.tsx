@@ -29,15 +29,15 @@ export default function ParticleBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    const colors = ['rgba(168, 85, 247, 0.6)', 'rgba(59, 130, 246, 0.6)', 'rgba(236, 72, 153, 0.6)'];
+    const colors = ['rgba(168, 85, 247, 0.8)', 'rgba(59, 130, 246, 0.8)', 'rgba(236, 72, 153, 0.8)'];
     
-    particlesRef.current = Array.from({ length: 80 }, () => ({
+    particlesRef.current = Array.from({ length: 60 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       z: Math.random() * 1000,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 3 + 1,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 2 + 1,
       color: colors[Math.floor(Math.random() * colors.length)],
     }));
 
@@ -50,7 +50,7 @@ export default function ParticleBackground() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(15, 16, 20, 0.1)';
+      ctx.fillStyle = 'rgba(15, 16, 20, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particlesRef.current.forEach((particle) => {
@@ -58,16 +58,16 @@ export default function ParticleBackground() {
         const dy = mouseRef.current.y - particle.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         
-        if (dist < 200) {
-          const force = (200 - dist) / 200;
-          particle.vx -= (dx / dist) * force * 0.3;
-          particle.vy -= (dy / dist) * force * 0.3;
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          particle.vx -= (dx / dist) * force * 0.4;
+          particle.vy -= (dy / dist) * force * 0.4;
         }
 
         particle.x += particle.vx;
         particle.y += particle.vy;
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
+        particle.vx *= 0.98;
+        particle.vy *= 0.98;
 
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
@@ -82,11 +82,6 @@ export default function ParticleBackground() {
         ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
         ctx.fill();
-
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = particle.color;
-        ctx.fill();
-        ctx.shadowBlur = 0;
       });
 
       particlesRef.current.forEach((p1, i) => {
@@ -95,12 +90,12 @@ export default function ParticleBackground() {
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 150) {
+          if (dist < 120) {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.2 * (1 - dist / 150)})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         });

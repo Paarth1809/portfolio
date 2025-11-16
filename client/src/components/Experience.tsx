@@ -5,39 +5,30 @@ import { Badge } from '@/components/ui/badge';
 
 const experiences = [
   {
-    role: 'SDE Intern',
-    company: 'Indian Cybercrime Coordination Centre',
-    duration: 'June 2025 - August 2025',
-    description: 'Built an OSINT tool for cyber commandos, a real-time criminal background checker, and integrated digital forensics. Also developed a reporting tool, attendance management system, and CTF competition platform.',
+    role: 'VAPT Intern',
+    company: 'Cyart',
+    duration: 'Jul 2025 - Dec 2025',
+    description: 'Configured personal home lab for exploit testing. Automated scanning and recon with Python. Built Wazuh alert rules and dashboards. Connected Windows/Linux systems for centralized logging. Simulated attacks to test detection accuracy.',
+    highlights: [
+      'Traffic analysis with Scapy and Wireshark',
+      'Automated security workflows with Python',
+      'SIEM implementation with Wazuh',
+      'Attack simulation and detection testing'
+    ],
     logo: '🛡️',
   },
   {
-    role: 'Summer Intern',
-    company: 'IIIT Nagpur',
-    duration: 'May 2025 - July 2025',
-    description: 'Worked on deepfake detection using M3T-Net, achieving 92.6% accuracy and improving inference speed with transformer-based optimization.',
-    logo: '🎓',
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'Knosfer',
-    duration: 'Mar 2025 - June 2025',
-    description: 'Created full-stack web apps using Django, FastAPI, and React, integrating APIs and web scrapers for scalable, high-performance platforms.',
-    logo: '💻',
-  },
-  {
-    role: 'AI/ML Intern',
-    company: 'Infosys SpringBoard',
-    duration: 'Oct 2024 - Dec 2024',
-    description: 'Built a waste management system with 85%+ accuracy using XGBoost and CNN, trained on a 50K+ entry dataset.',
-    logo: '🤖',
-  },
-  {
-    role: 'Research Intern',
-    company: 'NIT Jalandhar',
-    duration: 'June 2024 - July 2024',
-    description: 'Deployed 200+ critical patches in a patch management system, ensuring 100% compliance and enhancing network reliability.',
-    logo: '🔬',
+    role: 'Cyber Security Intern',
+    company: '1Stop',
+    duration: 'Mar 2025 - May 2025',
+    description: 'Built OSINT-based info gathering tool using Python. Developed phishing awareness simulation platform. Created recon automation scripts. Performed vulnerability scans using Nmap and Nikto.',
+    highlights: [
+      'OSINT tool development',
+      'Phishing simulation platform',
+      'Automated reconnaissance workflows',
+      'Vulnerability assessment and reporting'
+    ],
+    logo: '🔒',
   },
 ];
 
@@ -48,15 +39,11 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 md:py-32 bg-muted/20 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-neon-pink/30 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h2 
@@ -81,7 +68,7 @@ export default function Experience() {
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
                 className={`relative flex items-center ${
@@ -90,17 +77,15 @@ export default function Experience() {
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <Card
-                    className="group transition-all duration-500 border-primary/20 bg-card/50 backdrop-blur-sm"
+                    className="group transition-all duration-300 border-primary/20 bg-card/50 backdrop-blur-sm"
                     style={{
-                      transform: hoveredIndex === index ? 'translateY(-10px)' : 'translateY(0)',
+                      transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
                       boxShadow: hoveredIndex === index 
-                        ? '0 0 40px rgba(168, 85, 247, 0.6), 0 20px 60px rgba(0, 0, 0, 0.5)'
-                        : '0 0 20px rgba(168, 85, 247, 0.2)',
+                        ? '0 0 30px rgba(168, 85, 247, 0.5)'
+                        : '0 0 15px rgba(168, 85, 247, 0.2)',
                     }}
                     data-testid={`card-experience-${index}`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-neon-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
-                    
                     <CardHeader className="relative z-10">
                       <div className="flex items-start gap-4">
                         <motion.div 
@@ -108,12 +93,12 @@ export default function Experience() {
                           animate={{
                             rotateY: hoveredIndex === index ? 360 : 0,
                           }}
-                          transition={{ duration: 0.6 }}
+                          transition={{ duration: 0.4 }}
                         >
                           {exp.logo}
                         </motion.div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl mb-1 group-hover:text-neon-purple transition-colors duration-300" data-testid={`text-role-${index}`}>
+                          <CardTitle className="text-xl mb-1 group-hover:text-neon-purple transition-colors duration-200" data-testid={`text-role-${index}`}>
                             {exp.role}
                           </CardTitle>
                           <p className="text-sm font-medium text-neon-cyan" data-testid={`text-company-${index}`}>
@@ -126,9 +111,17 @@ export default function Experience() {
                       </div>
                     </CardHeader>
                     <CardContent className="relative z-10">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                         {exp.description}
                       </p>
+                      <ul className="space-y-1">
+                        {exp.highlights.map((highlight, i) => (
+                          <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                            <span className="text-neon-purple mt-1">•</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </CardContent>
                   </Card>
                 </div>
@@ -140,13 +133,13 @@ export default function Experience() {
                       ? 'linear-gradient(135deg, #a855f7, #3b82f6)'
                       : '#a855f7',
                     boxShadow: hoveredIndex === index
-                      ? '0 0 30px rgba(168, 85, 247, 0.8)'
-                      : '0 0 15px rgba(168, 85, 247, 0.5)',
+                      ? '0 0 20px rgba(168, 85, 247, 0.8)'
+                      : '0 0 12px rgba(168, 85, 247, 0.5)',
                   }}
                   animate={{
-                    scale: hoveredIndex === index ? 1.5 : 1,
+                    scale: hoveredIndex === index ? 1.4 : 1,
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.2 }}
                 />
               </motion.div>
             ))}

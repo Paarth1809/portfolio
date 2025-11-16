@@ -8,36 +8,28 @@ import { ExternalLink } from 'lucide-react';
 import webDashboard from '@assets/generated_images/Web_dashboard_project_screenshot_5be7669d.png';
 import mobileApp from '@assets/generated_images/Mobile_app_project_screenshot_630bb5f7.png';
 import aiChatbot from '@assets/generated_images/AI_chatbot_project_screenshot_21b1b8f5.png';
-import cybersecurity from '@assets/generated_images/Cybersecurity_project_screenshot_1fe4464f.png';
 
 const projects = [
   {
-    title: 'Knosfer Landing Page',
-    category: 'Landing Page',
-    description: 'Landing page showcasing LMS features and demonstrations with modern design and animations',
+    title: 'Network Sniffer',
+    category: 'Security Tool',
+    description: 'Built a packet sniffer using Scapy for real-time traffic capture and analysis. Lightweight tool to monitor and parse network packets with detailed protocol inspection.',
     image: webDashboard,
-    tags: ['React', 'TypeScript', 'Tailwind'],
+    tags: ['Python', 'Scapy', 'Networking'],
   },
   {
-    title: 'Webster CRM',
-    category: 'Mobile App',
-    description: 'AI-powered CRM application for campaign management and audience segmentation with Next.js frontend',
+    title: 'Password Generator',
+    category: 'Security Utility',
+    description: 'Created a customizable password generator with configurable length and character sets. Generates cryptographically secure random passwords for enhanced security.',
     image: mobileApp,
-    tags: ['Next.js', 'Node.js', 'AI/ML'],
+    tags: ['Python', 'Security', 'CLI'],
   },
   {
-    title: 'GitRAGBot',
-    category: 'AI/ML',
-    description: 'AI chatbot using RAG to answer queries from public GitHub repos, reducing manual code review',
+    title: 'Chess Game',
+    category: 'Interactive Game',
+    description: 'Developed an interactive chess game with complete move validation logic. Features valid moves, captures, and functional piece movement with clean UI.',
     image: aiChatbot,
-    tags: ['Python', 'RAG', 'OpenAI'],
-  },
-  {
-    title: 'EpiCircle ScrapPickup',
-    category: 'Mobile App',
-    description: 'React Native app for scrap pickup management with dynamic interfaces for customers and partners',
-    image: cybersecurity,
-    tags: ['React Native', 'TypeScript', 'Mobile'],
+    tags: ['Python', 'Game Dev', 'Logic'],
   },
 ];
 
@@ -49,24 +41,19 @@ export default function Projects() {
 
   const handleMouseMove = (e: React.MouseEvent, index: number) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
     setMousePosition({ x, y });
     setHoveredIndex(index);
   };
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/30 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h2 
@@ -76,22 +63,22 @@ export default function Projects() {
             }}
           >
             <span className="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
-              Selected Projects
+              Featured Projects
             </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
-            Explore my projects to experience innovative design and uncover creative solutions
+            Security tools and applications built with Python and modern technologies
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
@@ -99,41 +86,29 @@ export default function Projects() {
               }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-500"
+                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-300"
                 style={{
                   transform: hoveredIndex === index 
-                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.5}deg) rotateY(${mousePosition.x * 0.5}deg) translateZ(20px)`
+                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.3}deg) rotateY(${mousePosition.x * 0.3}deg) translateZ(15px)`
                     : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
                   boxShadow: hoveredIndex === index 
-                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 20px 60px rgba(0, 0, 0, 0.5)'
-                    : '0 0 20px rgba(168, 85, 247, 0.2)',
+                    ? '0 0 30px rgba(168, 85, 247, 0.5)'
+                    : '0 0 15px rgba(168, 85, 247, 0.2)',
                 }}
                 data-testid={`card-project-${index}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
                 <div className="relative overflow-hidden aspect-video">
                   <motion.img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                     animate={{
-                      scale: hoveredIndex === index ? 1.15 : 1,
-                    }}
-                    transition={{ duration: 0.5 }}
-                    data-testid={`img-project-${index}`}
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent transition-opacity duration-500 ${hoveredIndex === index ? 'opacity-100' : 'opacity-60'}`} />
-                  
-                  <motion.div
-                    className="absolute inset-0 border-2 border-neon-purple/0 group-hover:border-neon-purple/50"
-                    animate={{
-                      borderColor: hoveredIndex === index 
-                        ? 'rgba(168, 85, 247, 0.5)' 
-                        : 'rgba(168, 85, 247, 0)',
+                      scale: hoveredIndex === index ? 1.1 : 1,
                     }}
                     transition={{ duration: 0.3 }}
+                    data-testid={`img-project-${index}`}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
                 </div>
 
                 <CardHeader className="relative z-10">
@@ -146,7 +121,7 @@ export default function Projects() {
                     </Badge>
                   </div>
                   <CardTitle 
-                    className="text-xl group-hover:text-neon-purple transition-colors duration-300" 
+                    className="text-xl group-hover:text-neon-purple transition-colors duration-200" 
                     data-testid={`text-project-title-${index}`}
                   >
                     {project.title}
@@ -162,7 +137,7 @@ export default function Projects() {
                       <Badge 
                         key={tag} 
                         variant="outline" 
-                        className="text-xs border-border/50 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300"
+                        className="text-xs border-border/50 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-200"
                       >
                         {tag}
                       </Badge>
@@ -173,10 +148,10 @@ export default function Projects() {
                 <CardFooter className="relative z-10">
                   <Button 
                     variant="outline" 
-                    className="w-full gap-2 border-primary/50 hover:bg-primary hover:border-primary group/btn transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/50" 
+                    className="w-full gap-2 border-primary/50 hover:bg-primary hover:border-primary group/btn transition-all duration-200 shadow-lg shadow-primary/20" 
                     data-testid={`button-view-project-${index}`}
                   >
-                    <ExternalLink className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-300" />
+                    <ExternalLink className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-200" />
                     <span>View Project</span>
                   </Button>
                 </CardFooter>
