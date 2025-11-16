@@ -12,25 +12,32 @@ import cybersecurity from '@assets/generated_images/Cybersecurity_project_screen
 
 const projects = [
   {
-    title: 'Network Sniffer',
-    category: 'Security Tool',
-    description: 'Built a packet sniffer using Scapy for real-time traffic capture and analysis. Developed a lightweight network monitoring tool to capture, parse, and analyze network packets for security testing and diagnostics.',
-    image: cybersecurity,
-    tags: ['Python', 'Scapy', 'Networking'],
-  },
-  {
-    title: 'Password Generator',
-    category: 'Security Tool',
-    description: 'Created a secure password generator with customizable length and character sets. Developed a lightweight tool to generate strong random passwords with configurable parameters for enhanced security.',
+    title: 'Knosfer Landing Page',
+    category: 'Landing Page',
+    description: 'Landing page showcasing LMS features and demonstrations with modern design and animations',
     image: webDashboard,
-    tags: ['Python', 'Security', 'CLI'],
+    tags: ['React', 'TypeScript', 'Tailwind'],
   },
   {
-    title: 'Chess Game',
-    category: 'Game Development',
-    description: 'Built an interactive chess game with core move logic and validation. Developed a functional chess game with valid piece movement, captures, and game state management.',
+    title: 'Webster CRM',
+    category: 'Mobile App',
+    description: 'AI-powered CRM application for campaign management and audience segmentation with Next.js frontend',
+    image: mobileApp,
+    tags: ['Next.js', 'Node.js', 'AI/ML'],
+  },
+  {
+    title: 'GitRAGBot',
+    category: 'AI/ML',
+    description: 'AI chatbot using RAG to answer queries from public GitHub repos, reducing manual code review',
     image: aiChatbot,
-    tags: ['Python', 'Game Logic', 'OOP'],
+    tags: ['Python', 'RAG', 'OpenAI'],
+  },
+  {
+    title: 'EpiCircle ScrapPickup',
+    category: 'Mobile App',
+    description: 'React Native app for scrap pickup management with dynamic interfaces for customers and partners',
+    image: cybersecurity,
+    tags: ['React Native', 'TypeScript', 'Mobile'],
   },
 ];
 
@@ -38,37 +45,44 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent, index: number) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+    setMousePosition({ x, y });
+    setHoveredIndex(index);
+  };
 
   return (
-    <section id="projects" className="py-20 md:py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-neon-purple/4 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-neon-cyan/3 to-transparent" />
+    <section id="projects" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/30 rounded-full blur-3xl" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4 animate-neon-pulse"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4"
             style={{
               textShadow: '0 0 20px rgba(168, 85, 247, 0.5)',
             }}
           >
-            <span className="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
               Selected Projects
             </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
-            Security tools and applications built with Python
+            Explore my projects to experience innovative design and uncover creative solutions
           </p>
-          <motion.div 
-            className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50"
-            animate={{ scaleX: [0.8, 1.2, 0.8] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="w-20 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full shadow-lg shadow-primary/50" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -77,21 +91,26 @@ export default function Projects() {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              onMouseMove={(e) => handleMouseMove(e, index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              style={{
+                perspective: '1000px',
+              }}
             >
               <Card
-                className="overflow-hidden h-full flex flex-col group relative glass-card"
+                className="overflow-hidden h-full flex flex-col group relative border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-500"
                 style={{
+                  transform: hoveredIndex === index 
+                    ? `perspective(1000px) rotateX(${mousePosition.y * 0.5}deg) rotateY(${mousePosition.x * 0.5}deg) translateZ(20px)`
+                    : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)',
                   boxShadow: hoveredIndex === index 
-                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)'
-                    : '0 0 15px rgba(168, 85, 247, 0.2)',
+                    ? '0 0 40px rgba(168, 85, 247, 0.6), 0 20px 60px rgba(0, 0, 0, 0.5)'
+                    : '0 0 20px rgba(168, 85, 247, 0.2)',
                 }}
                 data-testid={`card-project-${index}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/15 via-neon-cyan/15 to-neon-pink/15 opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative overflow-hidden aspect-video">
                   <motion.img
@@ -99,9 +118,9 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover"
                     animate={{
-                      scale: hoveredIndex === index ? 1.1 : 1,
+                      scale: hoveredIndex === index ? 1.15 : 1,
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5 }}
                     data-testid={`img-project-${index}`}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent transition-opacity duration-500 ${hoveredIndex === index ? 'opacity-100' : 'opacity-60'}`} />

@@ -5,18 +5,39 @@ import { Badge } from '@/components/ui/badge';
 
 const experiences = [
   {
-    role: 'Vulnerability Assessment and Penetration Tester Intern (VAPT)',
-    company: 'Cyart',
-    duration: 'Jul 2025 - Dec 2025',
-    description: 'Configured personal home lab for exploit testing. Used Scapy and Wireshark to capture traffic and identify suspicious patterns. Automated scanning and reconnaissance with Python. Built Wazuh alert rules and dashboards for security event monitoring. Connected Windows and Linux systems to Wazuh for centralized logging. Simulated attacks (brute-force, port scans) to test detection accuracy.',
-    logo: '🔒',
+    role: 'SDE Intern',
+    company: 'Indian Cybercrime Coordination Centre',
+    duration: 'June 2025 - August 2025',
+    description: 'Built an OSINT tool for cyber commandos, a real-time criminal background checker, and integrated digital forensics. Also developed a reporting tool, attendance management system, and CTF competition platform.',
+    logo: '🛡️',
   },
   {
-    role: 'Cyber Security Intern',
-    company: '1Stop',
-    duration: 'Mar 2025 - May 2025',
-    description: 'Built an OSINT-based Information Gathering Tool using Python for automated data collection. Developed a phishing awareness simulation platform that mimicked real-world email attacks to train users and track responses. Created a Recon Automation script to streamline reconnaissance workflows. Performed vulnerability scans using Nmap and Nikto, documenting findings for internal reports.',
-    logo: '🛡️',
+    role: 'Summer Intern',
+    company: 'IIIT Nagpur',
+    duration: 'May 2025 - July 2025',
+    description: 'Worked on deepfake detection using M3T-Net, achieving 92.6% accuracy and improving inference speed with transformer-based optimization.',
+    logo: '🎓',
+  },
+  {
+    role: 'Full Stack Developer',
+    company: 'Knosfer',
+    duration: 'Mar 2025 - June 2025',
+    description: 'Created full-stack web apps using Django, FastAPI, and React, integrating APIs and web scrapers for scalable, high-performance platforms.',
+    logo: '💻',
+  },
+  {
+    role: 'AI/ML Intern',
+    company: 'Infosys SpringBoard',
+    duration: 'Oct 2024 - Dec 2024',
+    description: 'Built a waste management system with 85%+ accuracy using XGBoost and CNN, trained on a 50K+ entry dataset.',
+    logo: '🤖',
+  },
+  {
+    role: 'Research Intern',
+    company: 'NIT Jalandhar',
+    duration: 'June 2024 - July 2024',
+    description: 'Deployed 200+ critical patches in a patch management system, ensuring 100% compliance and enhancing network reliability.',
+    logo: '🔬',
   },
 ];
 
@@ -26,32 +47,29 @@ export default function Experience() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-20 md:py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-neon-pink/3 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-neon-purple/3 to-transparent" />
+    <section id="experience" className="py-20 md:py-32 bg-muted/20 relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-neon-pink/30 rounded-full blur-3xl" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4 animate-neon-pulse"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4"
             style={{
               textShadow: '0 0 20px rgba(236, 72, 153, 0.5)',
             }}
           >
-            <span className="bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan bg-clip-text text-transparent">
               Professional Experience
             </span>
           </h2>
-          <motion.div 
-            className="w-20 h-1 bg-gradient-to-r from-neon-pink to-neon-purple mx-auto rounded-full shadow-lg shadow-neon-pink/50"
-            animate={{ scaleX: [0.8, 1.2, 0.8] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="w-20 h-1 bg-gradient-to-r from-neon-pink to-neon-purple mx-auto rounded-full shadow-lg shadow-neon-pink/50" />
         </motion.div>
 
         <div className="relative">
@@ -63,26 +81,25 @@ export default function Experience() {
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
-                whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <Card
-                    className="group transition-all duration-200 glass-card overflow-hidden"
+                    className="group transition-all duration-500 border-primary/20 bg-card/50 backdrop-blur-sm"
                     style={{
-                      transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
+                      transform: hoveredIndex === index ? 'translateY(-10px)' : 'translateY(0)',
                       boxShadow: hoveredIndex === index 
-                        ? '0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)'
-                        : '0 0 15px rgba(168, 85, 247, 0.2)',
+                        ? '0 0 40px rgba(168, 85, 247, 0.6), 0 20px 60px rgba(0, 0, 0, 0.5)'
+                        : '0 0 20px rgba(168, 85, 247, 0.2)',
                     }}
                     data-testid={`card-experience-${index}`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-neon-cyan/10 to-neon-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-neon-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
                     
                     <CardHeader className="relative z-10">
                       <div className="flex items-start gap-4">
@@ -91,12 +108,12 @@ export default function Experience() {
                           animate={{
                             rotateY: hoveredIndex === index ? 360 : 0,
                           }}
-                          transition={{ duration: 0.4 }}
+                          transition={{ duration: 0.6 }}
                         >
                           {exp.logo}
                         </motion.div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl mb-1 group-hover:text-neon-purple transition-colors duration-200" data-testid={`text-role-${index}`}>
+                          <CardTitle className="text-xl mb-1 group-hover:text-neon-purple transition-colors duration-300" data-testid={`text-role-${index}`}>
                             {exp.role}
                           </CardTitle>
                           <p className="text-sm font-medium text-neon-cyan" data-testid={`text-company-${index}`}>
@@ -123,13 +140,13 @@ export default function Experience() {
                       ? 'linear-gradient(135deg, #a855f7, #3b82f6)'
                       : '#a855f7',
                     boxShadow: hoveredIndex === index
-                      ? '0 0 25px rgba(168, 85, 247, 0.7)'
-                      : '0 0 12px rgba(168, 85, 247, 0.5)',
+                      ? '0 0 30px rgba(168, 85, 247, 0.8)'
+                      : '0 0 15px rgba(168, 85, 247, 0.5)',
                   }}
                   animate={{
-                    scale: hoveredIndex === index ? 1.4 : 1,
+                    scale: hoveredIndex === index ? 1.5 : 1,
                   }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3 }}
                 />
               </motion.div>
             ))}

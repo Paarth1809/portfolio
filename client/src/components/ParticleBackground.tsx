@@ -6,16 +6,14 @@ interface Particle {
   z: number;
   vx: number;
   vy: number;
-  vz: number;
   size: number;
   color: string;
 }
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
+  const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef<Particle[]>([]);
-  const timeRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,11 +29,7 @@ export default function ParticleBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    const colors = [
-      'rgba(168, 85, 247, 0.6)',
-      'rgba(59, 130, 246, 0.6)',
-      'rgba(236, 72, 153, 0.5)',
-    ];
+    const colors = ['rgba(168, 85, 247, 0.6)', 'rgba(59, 130, 246, 0.6)', 'rgba(236, 72, 153, 0.6)'];
     
     particlesRef.current = Array.from({ length: 80 }, () => ({
       x: Math.random() * canvas.width,
@@ -43,24 +37,20 @@ export default function ParticleBackground() {
       z: Math.random() * 1000,
       vx: (Math.random() - 0.5) * 0.5,
       vy: (Math.random() - 0.5) * 0.5,
-      vz: (Math.random() - 0.5) * 1.5,
-      size: Math.random() * 2 + 1,
+      size: Math.random() * 3 + 1,
       color: colors[Math.floor(Math.random() * colors.length)],
     }));
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.targetX = e.clientX;
-      mouseRef.current.targetY = e.clientY;
+      mouseRef.current = {
+        x: e.clientX,
+        y: e.clientY,
+      };
     };
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      timeRef.current += 0.008;
-
-      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.05;
-      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.05;
-
-      ctx.fillStyle = 'rgba(15, 16, 20, 0.2)';
+      ctx.fillStyle = 'rgba(15, 16, 20, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particlesRef.current.forEach((particle) => {
@@ -74,35 +64,29 @@ export default function ParticleBackground() {
           particle.vy -= (dy / dist) * force * 0.3;
         }
 
-        particle.z += particle.vz;
-        
-        if (particle.z > 1000 || particle.z < 0) {
-          particle.vz *= -1;
-        }
-
         particle.x += particle.vx;
         particle.y += particle.vy;
         particle.vx *= 0.99;
         particle.vy *= 0.99;
 
-        if (particle.x < -50) particle.x = canvas.width + 50;
-        if (particle.x > canvas.width + 50) particle.x = -50;
-        if (particle.y < -50) particle.y = canvas.height + 50;
-        if (particle.y > canvas.height + 50) particle.y = -50;
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        const scale = 800 / (800 + particle.z);
+        particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+
+        const scale = 1000 / (1000 + particle.z);
         const size = particle.size * scale;
-        const opacity = scale;
-
-        ctx.save();
-        ctx.translate(particle.x, particle.y);
 
         ctx.beginPath();
-        ctx.arc(0, 0, size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color.replace(/[\d.]+\)/, `${opacity})`);
+        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
         ctx.fill();
 
-        ctx.restore();
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = particle.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
       });
 
       particlesRef.current.forEach((p1, i) => {
@@ -112,12 +96,10 @@ export default function ParticleBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 150) {
-            const opacity = 0.25 * (1 - dist / 150);
-            
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${opacity})`;
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.2 * (1 - dist / 150)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

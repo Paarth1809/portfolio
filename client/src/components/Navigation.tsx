@@ -27,16 +27,16 @@ export default function Navigation() {
     { label: 'About', id: 'about' },
     { label: 'Experience', id: 'experience' },
     { label: 'Projects', id: 'projects' },
+    { label: 'Testimonials', id: 'testimonials' },
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-150 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'glass-strong border-b border-primary/30 shadow-lg shadow-primary/20' 
+          ? 'bg-background/80 backdrop-blur-lg border-b border-primary/20 shadow-lg shadow-primary/10' 
           : ''
       }`}
       data-testid="navigation-header"
@@ -58,7 +58,7 @@ export default function Navigation() {
               className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-purple to-neon-cyan"
               initial={{ scaleX: 0 }}
               whileHover={{ scaleX: 1 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3 }}
             />
           </motion.button>
 
@@ -68,7 +68,7 @@ export default function Navigation() {
                 key={item.id}
                 variant="ghost"
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm relative group hover:text-neon-purple transition-colors duration-200"
+                className="text-sm relative group hover:text-neon-purple transition-colors duration-300"
                 data-testid={`link-${item.id}`}
               >
                 {item.label}
@@ -76,23 +76,29 @@ export default function Navigation() {
                   className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-purple to-neon-cyan"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3 }}
                 />
               </Button>
             ))}
             <Button
               onClick={() => scrollToSection('contact')}
-              className="ml-2 shadow-lg shadow-primary/30"
+              className="ml-2 relative overflow-hidden group shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300"
               data-testid="button-contact"
             >
-              <span>Contact</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              <span className="relative z-10">Contact</span>
             </Button>
           </div>
 
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden hover:text-neon-purple transition-colors duration-200"
+            className="md:hidden hover:text-neon-purple transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -112,7 +118,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/98 border-b border-primary/20"
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-primary/20"
           >
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item, index) => (
