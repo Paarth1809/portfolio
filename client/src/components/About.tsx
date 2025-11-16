@@ -18,7 +18,9 @@ export default function About() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-background relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-neon-cyan/3 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-neon-purple/3 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

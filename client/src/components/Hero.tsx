@@ -31,7 +31,8 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/6 via-background to-neon-cyan/6" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-neon-pink/4 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <motion.div

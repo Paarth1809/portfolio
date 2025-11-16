@@ -26,7 +26,9 @@ export default function Experience() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-20 md:py-32 bg-muted/20 relative overflow-hidden" ref={ref}>
+    <section id="experience" className="py-20 md:py-32 relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-neon-pink/3 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-neon-purple/3 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

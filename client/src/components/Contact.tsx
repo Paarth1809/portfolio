@@ -19,7 +19,8 @@ export default function Contact() {
       className="py-20 md:py-32 relative overflow-hidden"
       ref={ref}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-neon-cyan/10 to-neon-pink/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/8 via-background to-neon-cyan/8" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-neon-pink/6 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
